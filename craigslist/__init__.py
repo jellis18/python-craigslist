@@ -318,6 +318,8 @@ class CraigslistHousing(CraigslistBase):
         'bathrooms': {'url_key': 'bathrooms', 'value': None},
         'laundry_in_unit': {'url_key': 'laundry', 'value': 1},
         'no_smoking': {'url_key': 'no_smoking', 'value': 1},
+        'no_smoking': {'url_key': 'no_smoking', 'value': 1},
+        'housing_type': {'url_key': 'housing_type', 'value': None},
     }
 
 
