@@ -159,6 +159,11 @@ class CraigslistBase(object):
                 where = row.find('small')
                 p_text = row.find('span', {'class': 'p'}).text
 
+                # get text from posting
+                post = requests.get(url)
+                post_soup = BeautifulSoup(post.content, 'html.parser')
+                post_text = post_soup.find_all(id='postingbody')
+
                 result = {'id': id,
                           'name': name,
                           'url': url,
@@ -167,7 +172,8 @@ class CraigslistBase(object):
                           'where': where.text.strip('() ') if where else None,
                           'has_image': 'pic' in p_text,
                           'has_map': 'map' in p_text,
-                          'geotag': None}
+                          'geotag': None, 
+                          'post': post_text[0].text if post_text else None}
 
                 if geotagged:
                     self.geotag_result(result)
